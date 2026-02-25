@@ -9,7 +9,10 @@ const TechBox: React.FC<{ title: string; items: string[] }> = ({ title, items })
     <div className="p-4">
       <ul className="space-y-2 font-mono text-sm">
         {items.map((item, idx) => (
-          <li key={idx}>• {item}</li>
+          <li key={idx} className="flex items-start">
+            <span className="mr-2">•</span>
+            <span>{item}</span>
+          </li>
         ))}
       </ul>
     </div>
@@ -46,15 +49,24 @@ export const TechStackSection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-sm">
             <div className="space-y-2">
               <p className="font-black uppercase text-xs text-gray-500">Rapid Prototyping</p>
-              <p>• Vibe Coding (Replit, Bolt.new) for  rapid builds</p>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Vibe Coding (Replit, Bolt.new) for rapid builds</span>
+              </div>
             </div>
             <div className="space-y-2">
               <p className="font-black uppercase text-xs text-gray-500">KPI Tracking</p>
-              <p>• Performance dashboards for real-time monitoring</p>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Performance dashboards for real-time monitoring</span>
+              </div>
             </div>
             <div className="space-y-2">
               <p className="font-black uppercase text-xs text-gray-500">Management</p>
-              <p>• Feature management & roadmap tools</p>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Feature management & roadmap tools</span>
+              </div>
             </div>
           </div>
         </div>
