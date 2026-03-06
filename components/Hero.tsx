@@ -5,7 +5,7 @@ export const Hero: React.FC = () => {
   return (
     <div className="neo-brutalism-border bg-white p-8 md:p-12 relative overflow-hidden">
       <div className="space-y-4">
-        <h1 className="text-6xl md:text-8xl font-black uppercase leading-none">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-none break-words">
           KHARVANNAN RV
         </h1>
         <div className="space-y-1">
