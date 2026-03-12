@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-background: #F7FAF9;
+  --color-surface: #FFFFFF;
+  --color-accent-primary: #A3C9C7;
+  --color-accent-secondary: #B8C5D6;
+  --color-accent-tertiary: #F2D5AE;
+  --color-black: #000000;
+
+  --shadow-brutal: 4px 4px 0px 0px #000000;
+  --shadow-brutal-lg: 8px 8px 0px 0px #000000;
+  --shadow-brutal-sm: 2px 2px 0px 0px #000000;
+  --shadow-brutal-accent: 4px 4px 0px 0px #A3C9C7;
+}
+
+::selection {
+  background-color: #A3C9C7;
+  color: #FFFFFF;
+}

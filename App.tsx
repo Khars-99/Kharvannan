@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { Hero } from './components/Hero';
 import { MetricsSection } from './components/MetricsSection';
 import { ApproachSection } from './components/ApproachSection';
@@ -11,10 +12,12 @@ import { EducationSection } from './components/EducationSection';
 import { TrajectorySection } from './components/TrajectorySection';
 import { FinalPitch } from './components/FinalPitch';
 import { Footer } from './components/Footer';
+import { First90 } from './components/First90';
+import { Crucible } from './components/Crucible';
 
 type CaseStudyId = 'churn' | 'revenue';
 
-const App: React.FC = () => {
+const Home: React.FC = () => {
   const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudyId | null>('churn');
 
   const caseStudies = {
@@ -90,6 +93,16 @@ const App: React.FC = () => {
         <Footer />
       </div>
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/first90" element={<First90 />} />
+      <Route path="/crucible" element={<Crucible />} />
+    </Routes>
   );
 };
 
