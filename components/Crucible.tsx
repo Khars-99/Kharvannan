@@ -102,17 +102,38 @@ const RISK_LIMIT = 50;
 
 const countWords = (str: string) => str.trim().split(/\s+/).filter(w => w.length > 0).length;
 
+interface Case {
+  sector: string;
+  brief: string;
+  options: {
+    A: string;
+    B: string;
+    C: string;
+  };
+  recommended: string;
+  rationale: string;
+}
+
+interface VerdictData {
+  whatHolds: string;
+  whereItBreaks: string;
+  whatYouMissed: string;
+  questionToAsk: string;
+  verdictText: string;
+  verdictStrength: 'strong' | 'weak' | 'mixed';
+}
+
 export const Crucible = () => {
   const [currentScreen, setCurrentScreen] = useState<'landing' | 'case' | 'verdict'>('landing');
   const [selectedSector, setSelectedSector] = useState<string | null>(null);
-  const [currentCase, setCurrentCase] = useState<any>(null);
+  const [currentCase, setCurrentCase] = useState<Case | null>(null);
 
   const [selectedOption, setSelectedOption] = useState<'A' | 'B' | 'C' | null>(null);
   const [reasoning, setReasoning] = useState('');
   const [risk, setRisk] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);
-  const [verdictData, setVerdictData] = useState<any>(null);
+  const [verdictData, setVerdictData] = useState<VerdictData | null>(null);
   const [showRecommended, setShowRecommended] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -173,10 +194,14 @@ Evaluate this decision.`;
         })
       });
 
+      if (!response.ok) {
+        throw new Error('Analysis service is currently unavailable. Please check your backend configuration.');
+      }
+
       const data = await response.json();
       const text = data.candidates[0].content.parts[0].text;
       const clean = text.replace(/```json|```/g, "").trim();
-      const parsed = JSON.parse(clean);
+      const parsed = JSON.parse(clean) as VerdictData;
       setVerdictData(parsed);
       setCurrentScreen('verdict');
       window.scrollTo(0, 0);
