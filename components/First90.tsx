@@ -182,6 +182,10 @@ The thing keeping them up at night: ${keepingUpAtNight}`;
         })
       });
 
+      if (!response.ok) {
+        throw new Error('Diagnostic service is currently unavailable. Please check your backend configuration.');
+      }
+
       const data = await response.json();
       const text = data.candidates[0].content.parts[0].text;
       const clean = text.replace(/```json|```/g, "").trim();
@@ -190,7 +194,7 @@ The thing keeping them up at night: ${keepingUpAtNight}`;
 
     } catch (err) {
       console.error(err);
-      setError('An error occurred while generating the diagnostic. Please try again.');
+      setError(err instanceof Error ? err.message : 'An error occurred while generating the diagnostic. Please try again.');
     } finally {
       setLoading(false);
     }
