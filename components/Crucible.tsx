@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CASES } from './cases';
-
-const SECTORS = [
-  "D2C / E-Commerce", "SaaS", "Fintech", "Retail",
-  "Healthcare", "Edtech", "Real Estate", "Logistics"
-];
+import { CRUCIBLE_SECTORS as SECTORS } from '../constants/businessData';
+import { Case, VerdictData } from '../types';
 
 const REASONING_LIMIT = 100;
 const RISK_LIMIT = 50;
@@ -15,14 +12,14 @@ const countWords = (str: string) => str.trim().split(/\s+/).filter(w => w.length
 export const Crucible = () => {
   const [currentScreen, setCurrentScreen] = useState<'landing' | 'case' | 'verdict'>('landing');
   const [selectedSector, setSelectedSector] = useState<string | null>(null);
-  const [currentCase, setCurrentCase] = useState<any>(null);
+  const [currentCase, setCurrentCase] = useState<Case | null>(null);
 
   const [selectedOption, setSelectedOption] = useState<'A' | 'B' | 'C' | null>(null);
   const [reasoning, setReasoning] = useState('');
   const [risk, setRisk] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);
-  const [verdictData, setVerdictData] = useState<any>(null);
+  const [verdictData, setVerdictData] = useState<VerdictData | null>(null);
   const [showRecommended, setShowRecommended] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,7 +28,7 @@ export const Crucible = () => {
 
   const handleStartCase = () => {
     if (!selectedSector) return;
-    let caseData;
+    let caseData: Case;
     if (selectedSector === 'RANDOM') {
       caseData = CASES[Math.floor(Math.random() * CASES.length)];
     } else {
@@ -51,16 +48,6 @@ export const Crucible = () => {
     setIsLoading(true);
     setError(null);
 
-    const SYSTEM_PROMPT = `You are an adversarial business operator who has seen founders make every mistake in the book. You evaluate decisions made under pressure with no sentimentality. You are not a coach. You are not encouraging. You find the flaw in every decision — even correct ones — because every decision has a cost. Your job is to make the person think harder, not feel better.
-
-RULES:
-1. Never use the words: "great", "good", "interesting", "solid", "reasonable", "thoughtful", or any synonym of praise.
-2. Always find a weakness. Even if the decision is the recommended one, find what they failed to account for.
-3. verdictText must be one sentence. No softening. No qualifiers.
-4. verdictStrength must be exactly one of: strong, weak, mixed.
-5. questionToAsk must be something they demonstrably did not consider in their reasoning.
-6. Output must be valid JSON only. No text before or after.`;
-
     const userMessage = `Case Brief: ${currentCase.brief}
 
 Options:
@@ -79,7 +66,7 @@ Evaluate this decision.`;
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          systemPrompt: SYSTEM_PROMPT,
+          templateId: 'crucible',
           userMessage: userMessage
         })
       });
@@ -87,7 +74,7 @@ Evaluate this decision.`;
       const data = await response.json();
       const text = data.candidates[0].content.parts[0].text;
       const clean = text.replace(/```json|```/g, "").trim();
-      const parsed = JSON.parse(clean);
+      const parsed = JSON.parse(clean) as VerdictData;
       setVerdictData(parsed);
       setCurrentScreen('verdict');
       window.scrollTo(0, 0);
@@ -196,7 +183,7 @@ Evaluate this decision.`;
 
         <div className="flex justify-between items-center mb-8">
           <div className="border-[3px] border-black bg-[#B8C5D6] font-mono text-xs md:text-sm uppercase px-3 py-1 shadow-[2px_2px_0px_0px_#000000] rounded-none">
-            {currentCase.sector}
+            {currentCase?.sector}
           </div>
           <div className="font-mono text-xs md:text-sm uppercase text-black font-bold">
             10 MINUTES. THE FOUNDER IS WAITING.
@@ -210,7 +197,7 @@ Evaluate this decision.`;
                 THE BRIEF
               </div>
               <p className="text-base md:text-lg leading-[1.8] text-black">
-                {currentCase.brief}
+                {currentCase?.brief}
               </p>
             </div>
 
@@ -231,7 +218,7 @@ Evaluate this decision.`;
                     OPTION {opt}
                   </div>
                   <div className="text-base">
-                    {currentCase.options[opt]}
+                    {currentCase?.options[opt]}
                   </div>
                 </div>
               ))}
@@ -388,7 +375,7 @@ Evaluate this decision.`;
             </button>
           </div>
 
-          {showRecommended && (
+          {showRecommended && currentCase && (
             <div className="border-t-[3px] border-black pt-6 mt-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
               <div className="font-mono text-sm uppercase mb-3 font-bold">THE RECOMMENDED CALL</div>
               <div className="inline-block border-[3px] border-black bg-[#A3C9C7] text-black px-3 py-1 font-mono text-sm uppercase shadow-[3px_3px_0px_0px_#000000] rounded-none mb-4 font-bold">
