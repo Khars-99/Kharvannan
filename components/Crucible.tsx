@@ -1,96 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-const CASES = [
-  {
-    sector: "D2C / E-Commerce",
-    brief: "Your D2C apparel brand is doing $10M in revenue but CAC has doubled in the last year due to iOS privacy changes. You are barely breaking even. You have an offer from a major big-box retailer to carry your products, but they demand a 50% wholesale margin and net-90 payment terms.",
-    options: {
-      A: "Accept the retail deal. Volume will make up for the margin hit.",
-      B: "Reject the deal. Double down on organic social and community building.",
-      C: "Raise prices by 20% to absorb the higher CAC and stay D2C."
-    },
-    recommended: "C",
-    rationale: "Wholesale with net-90 terms will destroy your cash flow, and 50% margin leaves no room for error. Organic social takes years to build. Raising prices is the fastest way to test true brand equity and restore unit economics. If customers churn because of a 20% hike, your brand wasn't as strong as you thought."
-  },
-  {
-    sector: "SaaS",
-    brief: "You are the CEO of a B2B SaaS company at $5M ARR. Growth has flatlined for two quarters. Your VP of Sales wants to move upmarket to enterprise, which requires a 6-month product rebuild. Your VP of Product wants to launch a freemium tier to drive bottom-up adoption. Cash runway is 14 months.",
-    options: {
-      A: "Move upmarket. Commit to the 6-month rebuild and target enterprise.",
-      B: "Launch freemium. Focus on bottom-up adoption and volume.",
-      C: "Fire the VP of Sales. The current product should be selling."
-    },
-    recommended: "A",
-    rationale: "At $5M ARR, you likely have product-market fit but are hitting a ceiling in your current segment. Moving upmarket increases ACV and LTV, which is crucial for the next stage of growth. Freemium is a marketing strategy, not a product strategy, and is incredibly hard to pivot to if it wasn't in your DNA from day one."
-  },
-  {
-    sector: "Fintech",
-    brief: "Your consumer fintech app has 100k active users but low engagement. A competitor just launched a high-yield savings feature that is poaching your users. Building a similar feature will take 4 months and significant regulatory overhead. You have a partnership offer from a crypto exchange that could be integrated in 3 weeks.",
-    options: {
-      A: "Build the high-yield savings feature to match the competitor.",
-      B: "Integrate the crypto exchange partnership for a quick win.",
-      C: "Ignore both. Focus on improving the core user experience."
-    },
-    recommended: "A",
-    rationale: "In fintech, trust and core utility win. High-yield savings is a sticky, core financial product. Crypto is a volatile add-on that might alienate your core user base and introduces different regulatory risks. Taking the 4 months to build the right thing is better than a 3-week distraction."
-  },
-  {
-    sector: "Retail",
-    brief: "You run a chain of 15 boutique coffee shops. Foot traffic is down 20% post-pandemic, but average order value is up 15%. Your lease is up for renewal on 3 underperforming downtown locations. The landlord is offering a 10% rent reduction if you sign a 5-year lease.",
-    options: {
-      A: "Sign the 5-year lease. The rent reduction will improve margins.",
-      B: "Close the 3 locations and invest the capital in suburban expansion.",
-      C: "Keep the locations but convert them to automated, barista-less kiosks."
-    },
-    recommended: "B",
-    rationale: "A 10% rent reduction doesn't fix a 20% drop in foot traffic. The shift to remote work has structurally changed downtown retail. Closing the underperforming stores stops the bleeding, and suburban expansion follows where the customers actually are."
-  },
-  {
-    sector: "Healthcare",
-    brief: "Your telehealth startup connects patients with specialists. You currently charge a flat $100 fee per consultation. Patient acquisition cost is $40. A major insurance provider wants to include you in their network, which would guarantee volume but cap your reimbursement at $60 per consultation.",
-    options: {
-      A: "Accept the insurance deal for guaranteed volume and lower CAC.",
-      B: "Reject the deal and maintain the $100 direct-to-consumer model.",
-      C: "Pivot to a B2B model, selling the platform to employers."
-    },
-    recommended: "B",
-    rationale: "Accepting $60 when your CAC is $40 leaves only $20 to pay the specialist and cover overhead — you will lose money on every visit. The insurance deal destroys your unit economics. You must maintain the $100 fee and focus on lowering CAC or increasing LTV."
-  },
-  {
-    sector: "Edtech",
-    brief: "Your coding bootcamp has a 90% placement rate, but income share agreements (ISAs) are facing new regulatory scrutiny. 80% of your students use ISAs. You need to transition away from them, but upfront tuition of $15,000 will price out most of your demographic.",
-    options: {
-      A: "Partner with a third-party lender to offer traditional student loans.",
-      B: "Switch to a monthly subscription model for self-paced learning.",
-      C: "Target corporate training budgets instead of individual students."
-    },
-    recommended: "A",
-    rationale: "Your core value proposition is the 90% placement rate, which requires intensive, cohort-based instruction. A self-paced subscription destroys that model. Corporate training is a completely different business. Third-party lending keeps your core model intact while shifting the regulatory risk."
-  },
-  {
-    sector: "Real Estate",
-    brief: "You manage a portfolio of Class B office buildings. Occupancy has dropped to 60%. You have $10M in capital to deploy. You can either upgrade the amenities to try and attract Class A tenants, or convert the buildings into mixed-use residential/commercial spaces.",
-    options: {
-      A: "Upgrade amenities to compete for premium office tenants.",
-      B: "Convert to mixed-use residential/commercial.",
-      C: "Sell the portfolio at a loss and reinvest in industrial real estate."
-    },
-    recommended: "B",
-    rationale: "Class B office space is the most vulnerable asset class in a remote-work world. Upgrading amenities won't change the macro trend. Conversion to mixed-use addresses the structural housing shortage and repurposes the asset for long-term viability."
-  },
-  {
-    sector: "Logistics",
-    brief: "Your last-mile delivery startup relies on gig workers. A new state law will classify them as employees, increasing your labor costs by 30%. You currently operate on razor-thin margins. You have a 12-month contract with your biggest client that does not allow for price increases.",
-    options: {
-      A: "Absorb the cost and operate at a loss until the contract expires.",
-      B: "Break the contract, raise prices, and risk losing the client.",
-      C: "Pull out of the state entirely and focus on unregulated markets."
-    },
-    recommended: "B",
-    rationale: "Operating at a loss for 12 months with a 30% cost increase will likely bankrupt the company. Pulling out of the state abandons your investment. Breaking the contract forces a renegotiation; the client also needs the deliveries made and may accept a price increase rather than finding a new vendor overnight."
-  }
-];
+import { CASES } from './cases';
 
 const SECTORS = [
   "D2C / E-Commerce", "SaaS", "Fintech", "Retail",
@@ -125,7 +35,8 @@ export const Crucible = () => {
     if (selectedSector === 'RANDOM') {
       caseData = CASES[Math.floor(Math.random() * CASES.length)];
     } else {
-      caseData = CASES.find(c => c.sector === selectedSector) || CASES[0];
+      const sectorCases = CASES.filter(c => c.sector === selectedSector);
+      caseData = sectorCases[Math.floor(Math.random() * sectorCases.length)] || CASES[0];
     }
     setCurrentCase(caseData);
     setCurrentScreen('case');
@@ -202,8 +113,13 @@ Evaluate this decision.`;
   };
 
   const renderLanding = () => (
-    <div className="min-h-screen bg-[#F7FAF9] flex flex-col items-center justify-center p-6 font-sans">
-      <div className="max-w-3xl w-full text-center space-y-12">
+    <div className="min-h-screen bg-[#F7FAF9] flex flex-col items-center justify-center p-6 font-sans relative">
+      <div className="absolute top-6 left-6 md:top-8 md:left-8">
+        <Link to="/" className="inline-block px-4 py-2 font-black uppercase border-[3px] border-black bg-white hover:bg-[#A3C9C7] transition-colors shadow-[3px_3px_0px_0px_#000000]">
+          ← BACK TO HOME
+        </Link>
+      </div>
+      <div className="max-w-3xl w-full text-center space-y-12 mt-16 md:mt-0">
         <div className="space-y-8">
           <div className="w-full max-w-[280px] md:max-w-[400px] mx-auto border-[3px] border-black shadow-[8px_8px_0px_0px_#000000] bg-white overflow-hidden">
             <img
@@ -275,7 +191,7 @@ Evaluate this decision.`;
     <div className="min-h-screen bg-[#F7FAF9] p-4 md:p-8 font-sans">
       <div className="max-w-6xl mx-auto">
         <Link to="/" className="inline-block mb-6 px-4 py-2 font-black uppercase border-[3px] border-black bg-white hover:bg-[#A3C9C7] transition-colors shadow-[3px_3px_0px_0px_#000000]">
-          ← BACK
+          ← BACK TO HOME
         </Link>
 
         <div className="flex justify-between items-center mb-8">
@@ -413,7 +329,7 @@ Evaluate this decision.`;
       <div className="min-h-screen bg-[#F7FAF9] p-4 md:p-8 font-sans flex justify-center">
         <div className="w-full max-w-[800px] space-y-8">
           <Link to="/" className="inline-block mb-6 px-4 py-2 font-black uppercase border-[3px] border-black bg-white hover:bg-[#A3C9C7] transition-colors shadow-[3px_3px_0px_0px_#000000]">
-            ← BACK
+            ← BACK TO HOME
           </Link>
 
           <div className="space-y-4">

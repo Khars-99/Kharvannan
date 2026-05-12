@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Loader2, ArrowRight, Briefcase, Building2, Target } from 'lucide-react';
 
 const SECTORS = [
@@ -201,6 +202,10 @@ The thing keeping them up at night: ${keepingUpAtNight}`;
       <div className="absolute inset-0 z-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)', backgroundSize: '24px 24px', opacity: 0.1 }}></div>
       
       <div className="max-w-3xl mx-auto px-6 py-16 md:py-24 relative z-10">
+        
+        <Link to="/" className="inline-block mb-12 px-4 py-2 font-black uppercase border-[3px] border-black bg-white hover:bg-[#A3C9C7] transition-colors shadow-[3px_3px_0px_0px_#000000]">
+          ← BACK TO HOME
+        </Link>
         
         <header className="mb-16 flex flex-col items-center text-center">
           <div className="flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-8">

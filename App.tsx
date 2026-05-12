@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Hero } from './components/Hero';
 import { MetricsSection } from './components/MetricsSection';
-import { ApproachSection } from './components/ApproachSection';
-import { FrameworkSection } from './components/FrameworkSection';
 import { TechStackSection } from './components/TechStackSection';
 import { CaseStudySection } from './components/CaseStudySection';
 import { Projects } from './components/Projects';
@@ -47,8 +45,6 @@ const Home: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 pt-8 space-y-12">
         <Hero />
         <MetricsSection />
-        <ApproachSection />
-        <FrameworkSection />
         <TechStackSection />
         
         <div className="space-y-8">

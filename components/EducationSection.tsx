@@ -15,11 +15,11 @@ export const EducationSection: React.FC = () => {
             </div>
             <div>
               <p className="font-black text-lg">M.A. POLITICAL SCIENCE</p>
-              <p className="text-sm">Presidency College | Ranked Top 5 of 20 Students</p>
+              <p className="text-sm">Presidency College</p>
             </div>
             <div>
               <p className="font-black text-lg">BACHELOR OF BUSINESS ADMINISTRATION (BBA)</p>
-              <p className="text-sm">Guru Nanak College | Top 10%</p>
+              <p className="text-sm">Guru Nanak College</p>
             </div>
           </div>
         </div>
