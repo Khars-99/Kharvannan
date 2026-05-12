@@ -59,7 +59,7 @@ RULES:
 3. verdictText must be one sentence. No softening. No qualifiers.
 4. verdictStrength must be exactly one of: strong, weak, mixed.
 5. questionToAsk must be something they demonstrably did not consider in their reasoning.
-6. Output must be valid JSON only. No text before or after.`;
+6. Output must be valid JSON only with keys: whatHolds, whereItBreaks, whatYouMissed, questionToAsk, verdictText, verdictStrength.`;
 
     const userMessage = `Case Brief: ${currentCase.brief}
 
@@ -85,8 +85,24 @@ Evaluate this decision.`;
       });
 
       const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+        throw new Error("Invalid response from AI provider");
+      }
+
       const text = data.candidates[0].content.parts[0].text;
-      const clean = text.replace(/```json|```/g, "").trim();
+
+      // Robust JSON extraction
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) {
+        throw new Error("Could not find valid JSON in AI response");
+      }
+
+      const clean = jsonMatch[0];
       const parsed = JSON.parse(clean);
       setVerdictData(parsed);
       setCurrentScreen('verdict');
