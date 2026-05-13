@@ -93,6 +93,43 @@ export const handler: Handler = async (event) => {
 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
+    const schema = templateId === 'first90' ? {
+      type: "object",
+      properties: {
+        biggestLever: { type: "string" },
+        frictionPoints: {
+          type: "object",
+          properties: {
+            revenue: { type: "string" },
+            operations: { type: "string" },
+            reporting: { type: "string" }
+          },
+          required: ["revenue", "operations", "reporting"]
+        },
+        ninetyDayPlan: {
+          type: "array",
+          items: { type: "string" }
+        },
+        uncomfortableQuestion: { type: "string" },
+        closingLine: { type: "string" },
+        teamAndOrgRisk: { type: "string" },
+        financialRisk: { type: "string" },
+        theHardestThing: { type: "string" }
+      },
+      required: ["biggestLever", "frictionPoints", "ninetyDayPlan", "uncomfortableQuestion", "closingLine"]
+    } : {
+      type: "object",
+      properties: {
+        whatHolds: { type: "string" },
+        whereItBreaks: { type: "string" },
+        whatYouMissed: { type: "string" },
+        questionToAsk: { type: "string" },
+        verdictText: { type: "string" },
+        verdictStrength: { type: "string", enum: ["strong", "weak", "mixed"] }
+      },
+      required: ["whatHolds", "whereItBreaks", "whatYouMissed", "questionToAsk", "verdictText", "verdictStrength"]
+    };
+
     const geminiPayload = {
       systemInstruction: {
         parts: [{ text: systemPrompt }]
@@ -102,6 +139,8 @@ export const handler: Handler = async (event) => {
       }],
       generationConfig: {
         temperature: 0.7,
+        responseMimeType: "application/json",
+        responseSchema: schema
       }
     };
 
