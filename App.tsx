@@ -15,29 +15,29 @@ import { Crucible } from './components/Crucible';
 
 type CaseStudyId = 'churn' | 'revenue';
 
+const CASE_STUDIES = {
+  churn: {
+    title: "FIXING THE LEAKY BUCKET",
+    subtitle: "Product Growth Case Study",
+    problem: "High user drop-off rates impacting retention.",
+    diagnosis: "Utilized Microsoft Clarity and GA4 to analyze behavior. Identified specific UX friction points during onboarding.",
+    action: "Ran A/B tests on targeted improvements and implemented UX fixes.",
+    result: "67% REDUCTION IN CHURN",
+    visualType: "funnel" as const
+  },
+  revenue: {
+    title: "BUILDING THE REVENUE ENGINE",
+    subtitle: "Revenue & Lead Gen Case Study",
+    problem: "Business needed high-quality leads to support aggressive sales targets.",
+    diagnosis: "Conducted deep research on audience segments to launch targeted Meta Ads campaigns.",
+    action: "Shifted focus from vanity metrics to product-market fit insights derived from performance data.",
+    result: "₹4.1 CR TOTAL SALES SUPPORTED",
+    visualType: "bar" as const
+  }
+};
+
 const Home: React.FC = () => {
   const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudyId | null>('churn');
-
-  const caseStudies = {
-    churn: {
-      title: "FIXING THE LEAKY BUCKET",
-      subtitle: "Product Growth Case Study",
-      problem: "High user drop-off rates impacting retention.",
-      diagnosis: "Utilized Microsoft Clarity and GA4 to analyze behavior. Identified specific UX friction points during onboarding.",
-      action: "Ran A/B tests on targeted improvements and implemented UX fixes.",
-      result: "67% REDUCTION IN CHURN",
-      visualType: "funnel" as const
-    },
-    revenue: {
-      title: "BUILDING THE REVENUE ENGINE",
-      subtitle: "Revenue & Lead Gen Case Study",
-      problem: "Business needed high-quality leads to support aggressive sales targets.",
-      diagnosis: "Conducted deep research on audience segments to launch targeted Meta Ads campaigns.",
-      action: "Shifted focus from vanity metrics to product-market fit insights derived from performance data.",
-      result: "₹4.1 CR TOTAL SALES SUPPORTED",
-      visualType: "bar" as const
-    }
-  };
 
   return (
     <div className="min-h-screen bg-[#F7FAF9] text-black pb-20 selection:bg-[#A3C9C7] selection:text-white">
@@ -76,7 +76,7 @@ const Home: React.FC = () => {
           <div className="transition-opacity duration-300">
             {activeCaseStudy && (
               <CaseStudySection 
-                {...caseStudies[activeCaseStudy]}
+                {...CASE_STUDIES[activeCaseStudy]}
               />
             )}
           </div>

@@ -21,3 +21,24 @@ export interface TimelineItem {
   role: string;
   description: string;
 }
+
+export interface Case {
+  sector: string;
+  brief: string;
+  options: {
+    A: string;
+    B: string;
+    C: string;
+  };
+  recommended: 'A' | 'B' | 'C';
+  rationale: string;
+}
+
+export interface VerdictData {
+  whatHolds: string;
+  whereItBreaks: string;
+  whatYouMissed: string;
+  questionToAsk: string;
+  verdictText: string;
+  verdictStrength: 'strong' | 'weak' | 'mixed';
+}

@@ -8,7 +8,7 @@ export const CASES = [
       B: "Reject the deal. Double down on organic social and community building.",
       C: "Raise prices by 20% to absorb the higher CAC and stay D2C."
     },
-    recommended: "C",
+    recommended: "C" as const,
     rationale: "Wholesale with net-90 terms will destroy your cash flow, and 50% margin leaves no room for error. Organic social takes years to build. Raising prices is the fastest way to test true brand equity and restore unit economics. If customers churn because of a 20% hike, your brand wasn't as strong as you thought."
   },
   {
@@ -19,7 +19,7 @@ export const CASES = [
       B: "Wait 6 weeks for sea freight and manage customer expectations.",
       C: "Pivot all ad spend to the secondary product to maintain revenue flow."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "Air-freighting ruins your margins and burns cash you need for operations. Pivoting ad spend to a secondary product wastes the specific viral momentum you gained. Communicating transparently and collecting pre-orders for a 6-week wait preserves margins and capitalizes on scarcity."
   },
   {
@@ -30,7 +30,7 @@ export const CASES = [
       B: "Launch an aggressive retention discount (50% off) for month 3.",
       C: "Reduce the unit size by 20% but keep the price the same."
     },
-    recommended: "A",
+    recommended: "A" as const,
     rationale: "If customers are churning due to product accumulation, discounting won't solve the core UX issue. Shrinking the product damages brand trust. Biting the bullet and migrating platforms to offer flexibility fixes the root cause and protects the LTV of your core audience."
   },
   {
@@ -41,7 +41,7 @@ export const CASES = [
       B: "Double down on brand storytelling and increase prices.",
       C: "Cut current prices by 30% to defend market share."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "Engaging in a race to the bottom destroys your premium positioning. Launching a sub-brand dilutes focus and takes time. By leaning into quality and effectively raising prices (or holding firm), you differentiate yourself from the cheap knockoff and protect your core margin."
   },
 
@@ -54,7 +54,7 @@ export const CASES = [
       B: "Launch freemium. Focus on bottom-up adoption and volume.",
       C: "Fire the VP of Sales. The current product should be selling."
     },
-    recommended: "A",
+    recommended: "A" as const,
     rationale: "At $5M ARR, you likely have product-market fit but are hitting a ceiling in your current segment. Moving upmarket increases ACV and LTV, which is crucial for the next stage of growth. Freemium is a marketing strategy, not a product strategy, and is incredibly hard to pivot to if it wasn't in your DNA from day one."
   },
   {
@@ -65,7 +65,7 @@ export const CASES = [
       B: "Grandfather legacy users and only apply usage pricing to new signups.",
       C: "Keep the flat fee but implement hard API rate limits."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "Forcing a transition destroys goodwill and risks massive churn. Hard rate limits cripple power users who get the most value. Grandfathering protects your core MRR base while fixing the unit economics for all future growth."
   },
   {
@@ -76,7 +76,7 @@ export const CASES = [
       B: "Ignore the hype and focus on your core workflow features.",
       C: "Acquire a small, struggling AI startup to integrate their tech."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "A fake AI wrapper will lead to churn when customers realize it doesn't work. Acquisitions are messy and rarely fast. Focusing on your core workflow and selling against the competitor's 'smoke and mirrors' is the most defensible long-term move."
   },
   {
@@ -87,7 +87,7 @@ export const CASES = [
       B: "Offer 30% discounts for annual upfront payments.",
       C: "Downsell customers to cheaper, restricted tiers to keep them."
     },
-    recommended: "C",
+    recommended: "C" as const,
     rationale: "Holding firm destroys relationships and exacerbates churn. Annual upfront discounts pull forward revenue but hurt long-term ACV. Downselling keeps the customer logo and data in your ecosystem, allowing you to upsell them when budgets recover."
   },
 
@@ -100,7 +100,7 @@ export const CASES = [
       B: "Integrate the crypto exchange partnership for a quick win.",
       C: "Ignore both. Focus on improving the core user experience."
     },
-    recommended: "A",
+    recommended: "A" as const,
     rationale: "In fintech, trust and core utility win. High-yield savings is a sticky, core financial product. Crypto is a volatile add-on that might alienate your core user base and introduces different regulatory risks. Taking the 4 months to build the right thing is better than a 3-week distraction."
   },
   {
@@ -111,7 +111,7 @@ export const CASES = [
       B: "Implement manual review for flagged transactions.",
       C: "Force users to pass 3D-Secure authentication on every transaction."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "Loosening the model risks catastrophic financial loss. 3D-Secure introduces massive friction that will tank conversion rates. Manual review is unscalable long-term but is the right short-term bridge to keep merchants happy while you retrain your AI model."
   },
   {
@@ -122,7 +122,7 @@ export const CASES = [
       B: "Reject the money. Double down on freelance marketing.",
       C: "Take the money but try to run both the app and the API in parallel."
     },
-    recommended: "A",
+    recommended: "A" as const,
     rationale: "If consumer growth has stalled, the market is telling you something. Embedded finance has massive B2B momentum. Running both splits your focus entirely. It is painful, but pivoting hard and restructuring the team is the only way to capitalize on the $20M."
   },
   {
@@ -133,7 +133,7 @@ export const CASES = [
       B: "Launch the high-interest loan product.",
       C: "Cut marketing spend to zero until organic growth makes you profitable."
     },
-    recommended: "A",
+    recommended: "A" as const,
     rationale: "Predatory loans destroy brand trust and invite regulatory crackdowns, effectively killing consumer fintechs long-term. Cutting marketing to zero is a slow death. A premium subscription is the proven path to ARPU expansion, even if conversion is initially low."
   },
 
@@ -146,7 +146,7 @@ export const CASES = [
       B: "Close the 3 locations and invest the capital in suburban expansion.",
       C: "Keep the locations but convert them to automated, barista-less kiosks."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "A 10% rent reduction doesn't fix a 20% drop in foot traffic. The shift to remote work has structurally changed downtown retail. Closing the underperforming stores stops the bleeding, and suburban expansion follows where the customers actually are."
   },
   {
@@ -157,7 +157,7 @@ export const CASES = [
       B: "Add the cafe and merchandise to boost margins.",
       C: "Start selling exclusively rare, antiquarian books."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "You cannot compete with Amazon on selection or price. You survive by selling an experience. A cafe and merchandise leverage your physical footprint to create a community space and drive high-margin impulse buys."
   },
   {
@@ -168,7 +168,7 @@ export const CASES = [
       B: "Refuse all freebies. Only allow paid ambassador deals.",
       C: "Create a 'loan' program for photoshoots, requiring items back."
     },
-    recommended: "C",
+    recommended: "C" as const,
     rationale: "Giving away tight inventory kills margins. Paid deals are too expensive. A styling/loan program protects your inventory while still getting the influencer placement, establishing your store as a premium resource rather than a charity."
   },
   {
@@ -179,7 +179,7 @@ export const CASES = [
       B: "Absorb the cost to maintain price leadership.",
       C: "Delist several national brands and push private-label."
     },
-    recommended: "C",
+    recommended: "C" as const,
     rationale: "Absorbing a 12% hit in grocery margins is fatal. Passing it on angers consumers. Pushing private-label protects your margins, gives consumers a cheaper option, and forces the national brands to negotiate better terms later when their volume drops."
   },
 
@@ -192,7 +192,7 @@ export const CASES = [
       B: "Reject the deal and maintain the $100 direct-to-consumer model.",
       C: "Pivot to a B2B model, selling the platform to employers."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "Accepting $60 when your CAC is $40 leaves only $20 to pay the specialist and cover overhead — you will lose money on every visit. The insurance deal destroys your unit economics. You must maintain the $100 fee and focus on lowering CAC or increasing LTV."
   },
   {
@@ -203,7 +203,7 @@ export const CASES = [
       B: "Build a standalone 'lite' version that requires zero IT integration.",
       C: "Partner with EMR giants (Epic/Cerner) to be their native tool."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "Waiting out hospital IT departments takes years and you will run out of cash. EMR partnerships are notoriously slow and predatory. A 'lite' standalone version gets you in the door immediately, proves value, and forces IT to integrate later when doctors demand it."
   },
   {
@@ -214,7 +214,7 @@ export const CASES = [
       B: "Introduce AI chatbots to handle low-acuity cases.",
       C: "Cap new patient signups to maintain quality of service."
     },
-    recommended: "C",
+    recommended: "C" as const,
     rationale: "AI chatbots for mental health carry massive liability risk. Crushing your margins destroys the business model. Capping signups creates exclusivity and protects clinical quality, which is the only long-term moat in healthcare."
   },
   {
@@ -225,7 +225,7 @@ export const CASES = [
       B: "Pivot to the unregulated wellness market.",
       C: "Sell the IP to a massive medical incumbent right now."
     },
-    recommended: "A",
+    recommended: "A" as const,
     rationale: "The 'wellness' market is incredibly saturated, and you lose clinical differentiation. Selling the IP now, pre-approval, guarantees a lowball valuation. Completing the FDA trial protects the deep clinical moat and is the only path to a multi-billion dollar outcome."
   },
 
@@ -238,7 +238,7 @@ export const CASES = [
       B: "Switch to a monthly subscription model for self-paced learning.",
       C: "Target corporate training budgets instead of individual students."
     },
-    recommended: "A",
+    recommended: "A" as const,
     rationale: "Your core value proposition is the 90% placement rate, which requires intensive, cohort-based instruction. A self-paced subscription destroys that model. Corporate training is a completely different business. Third-party lending keeps your core model intact while shifting the regulatory risk."
   },
   {
@@ -249,7 +249,7 @@ export const CASES = [
       B: "Introduce aggressive, unskippable video ads for free users.",
       C: "Pivot to a B2B model and sell licenses to schools."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "Locking previously free features creates a hostile community revolt that can permanently tank your App Store ranking. B2B school sales have a notorious 2-year sales cycle. Ads generate immediate revenue and naturally incentivize power users to pay for a premium, ad-free experience."
   },
   {
@@ -260,7 +260,7 @@ export const CASES = [
       B: "Record the courses and sell them asynchronously for $200.",
       C: "Maintain the price but guarantee an ROI/Promotion metric."
     },
-    recommended: "A",
+    recommended: "A" as const,
     rationale: "Async courses lack the networking value that executives actually pay for. Guaranteeing a promotion is legally risky and unprovable. Dropping the price makes it an accessible, out-of-pocket career investment during a time when people are desperate to upskill and protect their jobs."
   },
   {
@@ -271,7 +271,7 @@ export const CASES = [
       B: "Abandon K-12 and pivot the product to adult continuing education.",
       C: "Sell exclusively directly to parents as a tutoring supplement."
     },
-    recommended: "C",
+    recommended: "C" as const,
     rationale: "Extorting districts ruins your reputation. Pivoting to adults wastes your math curriculum IP. The direct-to-parent market is massive, bypasses school district bureaucracy entirely, and has immediate willingness-to-pay for their child's success."
   },
 
@@ -284,7 +284,7 @@ export const CASES = [
       B: "Convert to mixed-use residential/commercial.",
       C: "Sell the portfolio at a loss and reinvest in industrial real estate."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "Class B office space is the most vulnerable asset class in a remote-work world. Upgrading amenities won't change the macro trend. Conversion to mixed-use addresses the structural housing shortage and repurposes the asset for long-term viability."
   },
   {
@@ -295,7 +295,7 @@ export const CASES = [
       B: "Deploy capital to furnish them and switch to Airbnb.",
       C: "Sell 15 houses individually to cover the tax burden of the rest."
     },
-    recommended: "C",
+    recommended: "C" as const,
     rationale: "Massive rent hikes cause costly turnovers. Switching 50 homes to Airbnb is an operational nightmare and faces massive regulatory risk in tech cities. Selling a portion trims your portfolio, captures the equity appreciation, and secures the cash flow for the remaining assets."
   },
   {
@@ -306,7 +306,7 @@ export const CASES = [
       B: "Offer your API exclusively to one massive PMS platform.",
       C: "Expand features to manage rent collection, competing directly with PMS."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "Selling immediately leaves money on the table. Building rent collection pits you against giant incumbents with deep pockets. Partnering exclusively with one PMS weaponizes your tech against their rivals, embedding you deeply while maintaining your independence."
   },
   {
@@ -317,7 +317,7 @@ export const CASES = [
       B: "Keep it as a mall and try to attract experiential retail (VR, arcades).",
       C: "Retrofit the interior for last-mile logistics and lease to e-commerce."
     },
-    recommended: "C",
+    recommended: "C" as const,
     rationale: "Experiential retail requires massive capital and is risky. 5 years of zoning battles carries massive carrying costs with zero revenue. Retrofitting for last-mile logistics capitalizes on immediate e-commerce demand, requires minimal structural changes, and generates rapid cash flow."
   },
 
@@ -330,7 +330,7 @@ export const CASES = [
       B: "Break the contract, raise prices, and risk losing the client.",
       C: "Pull out of the state entirely and focus on unregulated markets."
     },
-    recommended: "B",
+    recommended: "B" as const,
     rationale: "Operating at a loss for 12 months with a 30% cost increase will likely bankrupt the company. Pulling out of the state abandons your investment. Breaking the contract forces a renegotiation; the client also needs the deliveries made and may accept a price increase rather than finding a new vendor overnight."
   },
   {
@@ -341,7 +341,7 @@ export const CASES = [
       B: "Refuse the truckers' demands and risk them dropping your loads.",
       C: "Take the margin hit and subsidize the fuel costs for the truckers."
     },
-    recommended: "A",
+    recommended: "A" as const,
     rationale: "Subsidizing 40% fuel spikes will wipe out your cash reserves instantly. If truckers drop your loads, your service fails entirely. Shippers hate unexpected fees, but fuel surcharges are a known industry reality. You preserve operations and truckers' trust, taking the heat from shippers."
   },
   {
@@ -352,7 +352,7 @@ export const CASES = [
       B: "Stick with human temp labor to stay asset-light and flexible.",
       C: "Lease a secondary warehouse just for Q4 processing."
     },
-    recommended: "A",
+    recommended: "A" as const,
     rationale: "Temp labor reliability is a massive operational risk during Q4; if humans don't show up, you fail the SLA. Leasing extra space just duplicates the labor problem. The robotics capex permanently stabilizes your unit economics and creates a massive scaling moat."
   },
   {
@@ -363,7 +363,7 @@ export const CASES = [
       B: "Pay the drivers to wait, preserving loyalty for when it ends.",
       C: "Pivot the trucks to long-haul interstate freight temporarily."
     },
-    recommended: "C",
+    recommended: "C" as const,
     rationale: "Furloughing drivers means they will find other jobs, crippling you when the port reopens. Paying them to sit still burns cash infinitely. Pivoting to long-haul keeps revenue flowing and drivers employed, even if it's outside your core competency."
   }
 ];
