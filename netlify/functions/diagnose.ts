@@ -11,7 +11,9 @@ export const handler: Handler = async (event) => {
   if (!apiKey) {
     return { 
       statusCode: 500, 
-      body: JSON.stringify({ error: 'GEMINI_API_KEY is not configured on the server.' }) 
+      body: JSON.stringify({
+        error: 'GEMINI_API_KEY is not configured. Please add it to your Netlify environment variables.'
+      })
     };
   }
 
