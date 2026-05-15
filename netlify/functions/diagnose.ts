@@ -11,7 +11,9 @@ export const handler: Handler = async (event) => {
   if (!apiKey) {
     return { 
       statusCode: 500, 
-      body: JSON.stringify({ error: 'GEMINI_API_KEY is not configured on the server.' }) 
+      body: JSON.stringify({
+        error: 'GEMINI_API_KEY is not configured. Please add it to your Netlify environment variables.'
+      })
     };
   }
 
@@ -44,10 +46,18 @@ export const handler: Handler = async (event) => {
 
     if (!response.ok) {
         const errorText = await response.text();
-        console.error("Gemini API Error:", errorText);
+        let errorJson;
+        try {
+          errorJson = JSON.parse(errorText);
+        } catch {
+          errorJson = { error: { message: errorText } };
+        }
+        console.error("Gemini API Error:", errorJson);
         return {
            statusCode: response.status,
-           body: JSON.stringify({ error: "Failed to generate content from AI provider." })
+           body: JSON.stringify({
+             error: errorJson.error?.message || "Failed to generate content from AI provider."
+           })
         };
     }
 
