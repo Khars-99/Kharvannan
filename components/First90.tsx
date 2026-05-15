@@ -149,12 +149,14 @@ OUTPUT RULES
 2. Be specific to the sector, stage, and company described. Never give generic output.
 3. If input is unclear, infer from sector and stage.
 4. biggestLever: one sentence, maximum 25 words.
-5. Each frictionPoint: 2-3 sentences maximum.
+5. frictionPoints: Must be an object with keys "revenue", "operations", and "reporting". Each value 2-3 sentences maximum.
 6. ninetyDayPlan: three items, each maximum 30 words.
 7. uncomfortableQuestion: one sentence, maximum 30 words.
-8. closingLine: always exactly — "This is how I think. Imagine what I'd find in week one inside your business."`;
+8. closingLine: always exactly — "This is how I think. Imagine what I'd find in week one inside your business."
+9. If mode is deep, you MUST also include: teamAndOrgRisk, financialRisk, and theHardestThing. Each should be 2 sentences maximum.`;
 
-    let userMessage = `Company: ${company}
+    let userMessage = `Mode: ${mode}
+Company: ${company}
 Sector: ${sector}
 Stage: ${stage}`;
 
@@ -184,14 +186,30 @@ The thing keeping them up at night: ${keepingUpAtNight}`;
       });
 
       const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+        throw new Error("Invalid response from AI provider");
+      }
+
       const text = data.candidates[0].content.parts[0].text;
-      const clean = text.replace(/```json|```/g, "").trim();
+
+      // Robust JSON extraction
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) {
+        throw new Error("Could not find valid JSON in AI response");
+      }
+
+      const clean = jsonMatch[0];
       const parsedOutput = JSON.parse(clean) as DiagnosticOutput;
       setOutput(parsedOutput);
 
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      setError('An error occurred while generating the diagnostic. Please try again.');
+      setError(err.message || 'An error occurred while generating the diagnostic. Please try again.');
     } finally {
       setLoading(false);
     }
