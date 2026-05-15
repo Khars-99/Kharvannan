@@ -361,30 +361,30 @@ Evaluate this decision.`;
           <div className="space-y-3">
             <div className="border-[3px] border-black bg-white p-5 shadow-[4px_4px_0px_0px_#A3C9C7] border-l-[7px] border-l-[#A3C9C7] rounded-none">
               <div className="font-mono text-sm uppercase text-black border-b-2 border-[#A3C9C7] pb-2 mb-3 font-bold">WHAT HOLDS</div>
-              <p className="text-base">{verdictData.whatHolds}</p>
+              <p className="text-base">{verdictData?.whatHolds}</p>
             </div>
 
             <div className="border-[3px] border-black bg-white p-5 shadow-[4px_4px_0px_0px_#FF6B6B] border-l-[7px] border-l-[#FF6B6B] rounded-none">
               <div className="font-mono text-sm uppercase text-black border-b-2 border-[#FF6B6B] pb-2 mb-3 font-bold">WHERE IT BREAKS</div>
-              <p className="text-base">{verdictData.whereItBreaks}</p>
+              <p className="text-base">{verdictData?.whereItBreaks}</p>
             </div>
 
             <div className="border-[3px] border-black bg-white p-5 shadow-[4px_4px_0px_0px_#F2D5AE] border-l-[7px] border-l-[#F2D5AE] rounded-none">
               <div className="font-mono text-sm uppercase text-black border-b-2 border-[#F2D5AE] pb-2 mb-3 font-bold">WHAT YOU MISSED</div>
-              <p className="text-base">{verdictData.whatYouMissed}</p>
+              <p className="text-base">{verdictData?.whatYouMissed}</p>
             </div>
 
             <div className="border-[3px] border-black bg-white p-5 shadow-[4px_4px_0px_0px_#B8C5D6] border-l-[7px] border-l-[#B8C5D6] rounded-none">
               <div className="font-mono text-sm uppercase text-black border-b-2 border-[#B8C5D6] pb-2 mb-3 font-bold">THE QUESTION YOU SHOULD HAVE ASKED</div>
-              <p className="text-lg font-bold">{verdictData.questionToAsk}</p>
+              <p className="text-lg font-bold">{verdictData?.questionToAsk}</p>
             </div>
           </div>
 
           <div className="border-t-[3px] border-black pt-6 mt-6">
             <div className="font-mono text-sm uppercase mb-2 font-bold">VERDICT</div>
-            <div className={`border-[3px] border-black p-5 bg-white rounded-none ${getVerdictShadow(verdictData.verdictStrength)}`}>
+            <div className={`border-[3px] border-black p-5 bg-white rounded-none ${getVerdictShadow(verdictData?.verdictStrength)}`}>
               <p className="text-xl md:text-2xl font-black uppercase leading-tight">
-                {verdictData.verdictText}
+                {verdictData?.verdictText}
               </p>
             </div>
           </div>

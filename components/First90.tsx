@@ -484,15 +484,15 @@ The thing keeping them up at night: ${keepingUpAtNight}`;
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="bg-[#F7FAF9] p-6 border-[3px] border-black shadow-[4px_4px_0px_0px_#000000]">
                     <h3 className="text-sm font-black uppercase tracking-tight text-black mb-3 border-b-[3px] border-black pb-2">Revenue</h3>
-                    <p className="text-black font-medium text-sm leading-relaxed">{output.frictionPoints.revenue}</p>
+                    <p className="text-black font-medium text-sm leading-relaxed">{output.frictionPoints?.revenue}</p>
                   </div>
                   <div className="bg-[#F7FAF9] p-6 border-[3px] border-black shadow-[4px_4px_0px_0px_#000000]">
                     <h3 className="text-sm font-black uppercase tracking-tight text-black mb-3 border-b-[3px] border-black pb-2">Operations</h3>
-                    <p className="text-black font-medium text-sm leading-relaxed">{output.frictionPoints.operations}</p>
+                    <p className="text-black font-medium text-sm leading-relaxed">{output.frictionPoints?.operations}</p>
                   </div>
                   <div className="bg-[#F7FAF9] p-6 border-[3px] border-black shadow-[4px_4px_0px_0px_#000000]">
                     <h3 className="text-sm font-black uppercase tracking-tight text-black mb-3 border-b-[3px] border-black pb-2">Reporting</h3>
-                    <p className="text-black font-medium text-sm leading-relaxed">{output.frictionPoints.reporting}</p>
+                    <p className="text-black font-medium text-sm leading-relaxed">{output.frictionPoints?.reporting}</p>
                   </div>
                 </div>
               </section>
@@ -502,7 +502,7 @@ The thing keeping them up at night: ${keepingUpAtNight}`;
               <section>
                 <h2 className="text-sm font-black uppercase tracking-tight text-black bg-[#A3C9C7] px-3 py-1 border-[2px] border-black inline-block mb-6">03 / The 90-Day Plan</h2>
                 <ol className="space-y-6">
-                  {output.ninetyDayPlan.map((action, index) => (
+                  {output.ninetyDayPlan?.map((action, index) => (
                     <li key={index} className="flex gap-4 items-start">
                       <span className="text-black font-mono font-black text-xl bg-[#F2D5AE] px-2 py-1 border-[2px] border-black">{(index + 1).toString().padStart(2, '0')}</span>
                       <p className="text-black font-medium leading-relaxed mt-1">{action}</p>
