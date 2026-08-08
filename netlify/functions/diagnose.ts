@@ -7,10 +7,10 @@ export const handler: Handler = async (event) => {
 
   // Use the securely stored Netlify environment variable
   const apiKey = process.env.GEMINI_API_KEY;
-  
+
   if (!apiKey) {
-    return { 
-      statusCode: 500, 
+    return {
+      statusCode: 500,
       body: JSON.stringify({
         error: 'GEMINI_API_KEY is not configured. Please add it to your Netlify environment variables.'
       })
@@ -24,7 +24,7 @@ export const handler: Handler = async (event) => {
       return { statusCode: 400, body: JSON.stringify({ error: 'Missing prompt parameters.' }) };
     }
 
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent?key=${apiKey}`;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`;
 
     const geminiPayload = {
       systemInstruction: {
