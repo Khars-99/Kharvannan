@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Hero } from './components/Hero';
@@ -46,26 +45,26 @@ const Home: React.FC = () => {
         <Hero />
         <MetricsSection />
         <TechStackSection />
-        
+
         <div className="space-y-8">
           <h2 className="text-4xl font-bold uppercase tracking-tight">Case Studies</h2>
-          
+
           <div className="flex flex-wrap gap-4">
-            <button 
+            <button
               onClick={() => setActiveCaseStudy('churn')}
-              className={`px-6 py-4 text-sm md:text-base font-black uppercase neo-brutalism-border transition-all duration-100 ${
-                activeCaseStudy === 'churn' 
-                  ? 'bg-[#A3C9C7] text-white neo-brutalism-shadow-lg -translate-x-1 -translate-y-1' 
+              className={`px-6 py-4 text-sm md:text-base font-black uppercase neo-brutalism-border transition-all duration-300 ease-out ${
+                activeCaseStudy === 'churn'
+                  ? 'bg-[#A3C9C7] text-white neo-brutalism-shadow-lg -translate-x-1 -translate-y-1'
                   : 'bg-white hover:bg-gray-100 neo-brutalism-shadow'
               }`}
             >
               Fixing the Leaky Bucket
             </button>
-            <button 
+            <button
               onClick={() => setActiveCaseStudy('revenue')}
-              className={`px-6 py-4 text-sm md:text-base font-black uppercase neo-brutalism-border transition-all duration-100 ${
-                activeCaseStudy === 'revenue' 
-                  ? 'bg-[#A3C9C7] text-white neo-brutalism-shadow-lg -translate-x-1 -translate-y-1' 
+              className={`px-6 py-4 text-sm md:text-base font-black uppercase neo-brutalism-border transition-all duration-300 ease-out ${
+                activeCaseStudy === 'revenue'
+                  ? 'bg-[#A3C9C7] text-white neo-brutalism-shadow-lg -translate-x-1 -translate-y-1'
                   : 'bg-white hover:bg-gray-100 neo-brutalism-shadow'
               }`}
             >
@@ -73,9 +72,9 @@ const Home: React.FC = () => {
             </button>
           </div>
 
-          <div className="transition-opacity duration-300">
+          <div className="transition-opacity duration-300 ease-out">
             {activeCaseStudy && (
-              <CaseStudySection 
+              <CaseStudySection
                 {...caseStudies[activeCaseStudy]}
               />
             )}

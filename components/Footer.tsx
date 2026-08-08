@@ -1,19 +1,18 @@
-
 import React from 'react';
 
-const ContactIcon: React.FC<{ 
-  href: string; 
-  icon: React.ReactNode; 
-  label: string 
+const ContactIcon: React.FC<{
+  href: string;
+  icon: React.ReactNode;
+  label: string
 }> = ({ href, icon, label }) => (
-  <a 
-    href={href} 
-    target="_blank" 
+  <a
+    href={href}
+    target="_blank"
     rel="noopener noreferrer"
     aria-label={label}
-    className="neo-brutalism-border bg-white p-4 hover:bg-[#A3C9C7] hover:text-white transition-colors duration-200 neo-brutalism-shadow flex items-center justify-center w-16 h-16 group"
+    className="neo-brutalism-border bg-white p-4 hover:bg-[#A3C9C7] hover:text-white transition-colors duration-300 ease-out neo-brutalism-shadow flex items-center justify-center w-16 h-16 group"
   >
-    <div className="w-8 h-8 group-hover:scale-110 transition-transform duration-200">
+    <div className="w-8 h-8 group-hover:scale-110 transition-transform duration-300 ease-out">
       {icon}
     </div>
   </a>
@@ -24,14 +23,17 @@ export const Footer: React.FC = () => {
     <div className="mt-20 space-y-12">
       <div className="text-center space-y-8">
         <h2 className="text-5xl md:text-7xl font-black uppercase text-[#A3C9C7]">READY TO BUILD & SCALE</h2>
-        <button className="neo-brutalism-border bg-white px-12 py-4 text-3xl font-black uppercase hover:bg-[#A3C9C7] hover:text-white transition-colors duration-200 neo-brutalism-shadow">
+        <a
+          href="mailto:r.v.kharvannan@gmail.com"
+          className="inline-block neo-brutalism-border bg-white px-12 py-4 text-3xl font-black uppercase hover:bg-[#A3C9C7] hover:text-white transition-colors duration-300 ease-out neo-brutalism-shadow"
+        >
           LET’S TALK
-        </button>
+        </a>
       </div>
-      
+
       <div className="flex flex-row justify-center items-center gap-6 pb-12">
-        <ContactIcon 
-          href="mailto:r.v.kharvannan@gmail.com" 
+        <ContactIcon
+          href="mailto:r.v.kharvannan@gmail.com"
           label="Email Me"
           icon={
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -39,8 +41,8 @@ export const Footer: React.FC = () => {
             </svg>
           }
         />
-        <ContactIcon 
-          href="tel:+919994412111" 
+        <ContactIcon
+          href="tel:+919994412111"
           label="Call Me"
           icon={
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -48,8 +50,8 @@ export const Footer: React.FC = () => {
             </svg>
           }
         />
-        <ContactIcon 
-          href="https://linkedin.com/in/kharvannan4160" 
+        <ContactIcon
+          href="https://linkedin.com/in/kharvannan4160"
           label="LinkedIn Profile"
           icon={
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
