@@ -51,7 +51,7 @@ export const TechStackSection: React.FC = () => {
               <p className="font-black uppercase text-xs text-gray-500">Rapid Prototyping</p>
               <div className="flex items-start">
                 <span className="mr-2">•</span>
-                <span>Vibe Coding (Antigravity,claude code) for rapid builds</span>
+                <span>Vibe Coding (Antigravity, Claude Code) for rapid builds</span>
               </div>
             </div>
             <div className="space-y-2">
