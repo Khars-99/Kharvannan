@@ -38,8 +38,8 @@ export const MetricsSection: React.FC = () => {
           }
         />
         <MetricCard 
-          value="₹4.1 Cr" 
-          label="Sales Supported"
+          value="₹4.1 Cr"
+          label="Revenue Pipeline Built"
           description="Lead generation via Meta Ads and extracting product-market fit insights."
           icon={
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-full h-full">
