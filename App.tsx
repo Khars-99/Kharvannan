@@ -33,7 +33,7 @@ const Home: React.FC = () => {
       problem: "Business needed high-quality leads to support aggressive sales targets.",
       diagnosis: "Conducted deep research on audience segments to launch targeted Meta Ads campaigns.",
       action: "Shifted focus from vanity metrics to product-market fit insights derived from performance data.",
-      result: "₹4.1 CR TOTAL SALES SUPPORTED",
+      result: "₹4.1 CR REVENUE PIPELINE BUILT",
       visualType: "bar" as const
     }
   };
